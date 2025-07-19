@@ -17,3 +17,23 @@ void Portfolio::updatePrice(const string& symbol, double newPrice){
     }
     cout<<"Symbol not found!\n";
 }
+
+void Portfolio::display() const {
+    std::cout << "\n=== PORTFOLIO OVERVIEW ===\n";
+    std::cout << std::left << std::setw(8) << "SYMBOL" 
+              << std::setw(10) << "QTY" 
+              << std::setw(12) << "COST BASIS"
+              << std::setw(12) << "CUR PRICE"
+              << std::setw(12) << "P/L" << "\n";
+              
+    for (const auto& inv : investment) {
+        std::cout << std::setw(8) << inv.symbol
+                  << std::setw(10) << inv.quantity
+                  << std::setw(12) << std::fixed << std::setprecision(2) << inv.purchasePrice
+                  << std::setw(12) << inv.currentPrice
+                  << std::setw(12) << inv.profitLoss() << "\n";
+    }
+    
+    std::cout << "\nCash Balance: $" << cashBalance << "\n";
+    std::cout << "Total Portfolio Value: $" << totalValue() << "\n";
+}
