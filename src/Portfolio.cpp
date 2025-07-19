@@ -37,3 +37,11 @@ void Portfolio::display() const {
     std::cout << "\nCash Balance: $" << cashBalance << "\n";
     std::cout << "Total Portfolio Value: $" << totalValue() << "\n";
 }
+
+double Portfolio::totalValue() const {
+    double total = cashBalance;
+    for(const auto& inv : investment){
+        total += inv.value();
+    }
+    return total;
+}
