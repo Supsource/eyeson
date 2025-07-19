@@ -13,4 +13,4 @@ class Portfolio{
     void updatePrice(const string& symbol, double newPrice);
     void display() const;
     double totalValue() const;
-}
+};
