@@ -4,6 +4,16 @@
 using namespace std;
 
 void Portfolio::addInvestment(const string& symbol, int quantity, double price){
-    investments.push_back({symbol, quantity, price, price});
+    investment.push_back({symbol, quantity, price, price});
     cashBalance -= quantity * price;
+}
+
+void Portfolio::updatePrice(const string& symbol, double newPrice){
+    for(auto& inv : investment){
+        if(inv.symbol == symbol){
+            inv.currentPrice = newPrice;
+            return;
+        }
+    }
+    cout<<"Symbol not found!\n";
 }
